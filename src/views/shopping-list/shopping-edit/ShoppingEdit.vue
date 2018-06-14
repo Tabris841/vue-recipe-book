@@ -3,16 +3,35 @@
     <b-form @sumbit.prevent="onSubmit" @reset="onClear" autocomplete="off" novalidate>
       <b-form-row>
         <b-form-group class="col-sm-5" label="Name" label-for="name">
-          <b-form-input type="text" id="name" name="name" v-model="form.name" @change="$v.$touch()" :state="checkValidationState('name')" />
+          <b-form-input
+            type="text"
+            id="name"
+            name="name"
+            v-model="form.name"
+            @change="$v.$touch()"
+            :state="checkValidationState('name')"/>
         </b-form-group>
         <b-form-group class="col-sm-2" label="Amount" label-for="amount">
-          <b-form-input type="number" id="amount" name="amount" v-model="form.amount" @change="$v.$touch()"  :state="checkValidationState('amount')" />
+          <b-form-input
+            type="number"
+            id="amount"
+            name="amount"
+            v-model="form.amount"
+            @change="$v.$touch()"
+            :state="checkValidationState('amount')" />
         </b-form-group>
       </b-form-row>
 
       <b-form-row>
         <b-button-group class="col-sm-12">
-          <b-button variant="success" type="submit" @click.prevent="onSubmit" :disabled="$v.form.$invalid">{{ editMode ? 'Update' : 'Add' }}</b-button>
+          <b-button
+            variant="success"
+            type="submit" 
+            @click.prevent="onSubmit" 
+            :disabled="$v.form.$invalid"
+          >
+            {{ editMode ? 'Update' : 'Add' }}
+          </b-button>
           <b-button v-if="editMode" variant="danger" @click="onDelete">Delete</b-button>
           <b-button variant="primary" type="reset">Clear</b-button>
         </b-button-group>
@@ -71,7 +90,7 @@ export default {
       this.onClear();
     },
     checkValidationState(field) {
-      return this.$v.form[field].$dirty ? !this.$v.form[field].$invalid : null
+      return this.$v.form[field].$dirty ? !this.$v.form[field].$invalid : null;
     },
     ...mapMutations('shoppingListModule', [
       'deleteIngredient',

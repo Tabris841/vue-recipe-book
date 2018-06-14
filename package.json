@@ -8,13 +8,18 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "bootstrap-vue": "^2.0.0-rc.11",
+    "firebase": "^5.0.4",
+    "npm": "^6.1.0",
     "vue": "^2.5.16",
     "vue-router": "^3.0.1",
+    "vuefire": "^1.4.5",
     "vuelidate": "^0.7.4",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
+    "@firebase/app-types": "^0.3.2",
     "@vue/cli-plugin-babel": "^3.0.0-beta.12",
     "@vue/cli-plugin-eslint": "^3.0.0-beta.12",
     "@vue/cli-service": "^3.0.0-beta.12",
