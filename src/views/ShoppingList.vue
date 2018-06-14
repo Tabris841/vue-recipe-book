@@ -13,13 +13,12 @@
       </b-list-group-item>
     </b-list-group>
   </div>
-
 </template>
 
 <script>
 import { mapMutations, mapGetters } from 'vuex';
 
-import ShoppingEdit from './shopping-edit/ShoppingEdit';
+import ShoppingEdit from '@/components/ShoppingEdit';
 
 export default {
   name: 'ShoppingList',

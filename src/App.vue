@@ -2,13 +2,9 @@
   <div>
     <Header></Header>
 
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <router-view/>
-        </div>
-      </div>
-    </div>
+    <b-container class="main-container">
+      <router-view/>
+    </b-container>
 
   </div>
 </template>
@@ -17,11 +13,15 @@
 import Header from '@/components/Header';
 
 export default {
+  name: 'app',
   components: {
     Header
   }
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+.main-container {
+  margin-top: 20px;
+}
 </style>

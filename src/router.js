@@ -1,11 +1,14 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import Home from './views/home/Home';
-import SignIn from './views/SignIn';
-import SignUp from './views/SignUp';
-import Recipes from './views/Recipes';
-import ShoppingList from './views/shopping-list/ShoppingList';
+import Home from '@/views/Home';
+import SignIn from '@/views/SignIn';
+import SignUp from '@/views/SignUp';
+import Recipes from '@/views/Recipes';
+import ShoppingList from '@/views/ShoppingList';
+import RecipeStart from '@/components/RecipeStart';
+import RecipeDetail from '@/components/RecipeDetail';
+import RecipeEdit from '@/components/RecipeEdit';
 
 Vue.use(Router);
 
@@ -29,8 +32,26 @@ export default new Router({
     },
     {
       path: '/recipes',
-      name: 'recipes',
-      component: Recipes
+      component: Recipes,
+      children: [
+        {
+          path: '',
+          name: 'recipes',
+          component: RecipeStart
+        },
+        {
+          path: '/new',
+          component: RecipeEdit
+        },
+        {
+          path: ':id',
+          component: RecipeDetail
+        },
+        {
+          path: ':id/edit',
+          component: RecipeEdit
+        }
+      ]
     },
     {
       path: '/shopping-list',

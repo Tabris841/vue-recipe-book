@@ -41,7 +41,8 @@ export default {
   methods: {
     onSaveData() {},
     onFetchData() {},
-    ...mapActions('authModule', ['logout'])
+    ...mapActions('authModule', ['logout']),
+    ...mapActions('recipeModule', { onFetchData: 'recipeFetch' })
   },
   computed: {
     ...mapGetters('authModule', ['isAuthenticated'])

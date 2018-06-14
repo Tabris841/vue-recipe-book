@@ -1,10 +1,24 @@
 <template>
-  <div>Recipes</div>
+  <b-container>
+    <b-row>
+      <b-col cols="5">
+        <RecipeList />
+      </b-col>
+      <b-col cols="7">
+        <router-view></router-view>
+      </b-col>
+    </b-row> 
+  </b-container>
 </template>
 
 <script>
+import RecipeList from '@/components/RecipeList';
+
 export default {
-  name: 'Recipes'
+  name: 'Recipes',
+  components: {
+    RecipeList
+  }
 };
 </script>
 
