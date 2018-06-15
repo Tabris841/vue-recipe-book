@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
+import store from './store/index';
 import Home from '@/views/Home';
 import SignIn from '@/views/SignIn';
 import SignUp from '@/views/SignUp';
@@ -42,7 +43,14 @@ export default new Router({
         {
           path: '/new',
           name: 'recipeNew',
-          component: RecipeEdit
+          component: RecipeEdit,
+          beforeEnter: (to, from, next) => {
+            if (store.state.authModule.authenticated) {
+              next();
+            } else {
+              next(false);
+            }
+          }
         },
         {
           path: ':id',
@@ -52,7 +60,14 @@ export default new Router({
         {
           path: ':id/edit',
           name: 'recipeEdit',
-          component: RecipeEdit
+          component: RecipeEdit,
+          beforeEnter: (to, from, next) => {
+            if (store.state.authModule.authenticated) {
+              next();
+            } else {
+              next(false);
+            }
+          }
         }
       ]
     },
