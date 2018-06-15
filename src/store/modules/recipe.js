@@ -33,7 +33,7 @@ const actions = {
 
 const mutations = {
   setRecipes(state, recipes) {
-    state = { ...state, recipes: [...recipes] };
+    state.recipes = [...recipes];
   },
   addRecipe(state, recipe) {
     state.recipes = [...state.recipes, recipe];
@@ -43,12 +43,12 @@ const mutations = {
     const updatedRecipe = { ...recipe, ...payload.updatedRecipe };
     const recipes = [...state.recipes];
     recipes[payload.index] = updatedRecipe;
-    state = { ...state, recipes: [...recipes] };
+    state.recipes = [...recipes];
   },
   deleteRecipe(state, index) {
     const oldRecipes = [...state.recipes];
     oldRecipes.splice(index, 1);
-    state = { ...state, recipes: oldRecipes };
+    state.recipes = oldRecipes;
   }
 };
 

@@ -1,8 +1,9 @@
 <template>
-  <b-list-group-item :to="{ path: '/recipes/' + index }">
-    <img :src="recipe.imagePath" :alt="recipe.name">
+  <b-list-group-item :to="{ name: 'recipeDetail', params: { id: index } }">
+    <img :src="recipe.imagePath"
+         :alt="recipe.name">
     <h3>{{recipe.name}}</h3>
-    <p>{{recipe.description}}</p>  
+    <p>{{recipe.description}}</p>
   </b-list-group-item>
 </template>
 

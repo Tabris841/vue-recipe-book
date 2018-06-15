@@ -1,30 +1,30 @@
 <template>
   <b-container>
-    <b-form @sumbit.prevent="onSignup" autocomplete="off" novalidate>
-      <b-form-group label="Email" label-for="email">
-        <b-form-input
-          type="text"
-          id="email"
-          name="email"
-          v-model="form.email"
-          @change="$v.$touch()"
-          :state="checkValidationState('email')"/>
+    <b-form @sumbit.prevent="onSignup"
+            autocomplete="off"
+            novalidate>
+      <b-form-group label="Email"
+                    label-for="email">
+        <b-form-input type="text"
+                      id="email"
+                      name="email"
+                      v-model="form.email"
+                      @change="$v.$touch()"
+                      :state="checkValidationState('email')" />
       </b-form-group>
-      <b-form-group label="Password" label-for="password">
-        <b-form-input
-          type="password"
-          id="password"
-          name="password"
-          v-model="form.password"
-          @change="$v.$touch()"
-          :state="checkValidationState('password')"/>
+      <b-form-group label="Password"
+                    label-for="password">
+        <b-form-input type="password"
+                      id="password"
+                      name="password"
+                      v-model="form.password"
+                      @change="$v.$touch()"
+                      :state="checkValidationState('password')" />
       </b-form-group>
-      <b-button 
-        variant="primary"
-        type="submit"
-        @click.prevent="onSignup" 
-        :disabled="$v.form.$invalid"
-      >
+      <b-button variant="primary"
+                type="submit"
+                @click.prevent="onSignup"
+                :disabled="$v.form.$invalid">
         Sign Up
       </b-button>
     </b-form>
@@ -38,12 +38,14 @@ import { required } from 'vuelidate/lib/validators';
 
 export default {
   name: 'SignUp',
-  data: () => ({
-    form: {
-      email: '',
-      password: ''
-    }
-  }),
+  data() {
+    return {
+      form: {
+        email: '',
+        password: ''
+      }
+    };
+  },
   mixins: [validationMixin],
   validations: {
     form: {

@@ -41,14 +41,17 @@ export default new Router({
         },
         {
           path: '/new',
+          name: 'recipeNew',
           component: RecipeEdit
         },
         {
           path: ':id',
+          name: 'recipeDetail',
           component: RecipeDetail
         },
         {
           path: ':id/edit',
+          name: 'recipeEdit',
           component: RecipeEdit
         }
       ]
@@ -57,6 +60,7 @@ export default new Router({
       path: '/shopping-list',
       name: 'shoppingList',
       component: ShoppingList
-    }
+    },
+    { path: '*', redirect: '/' }
   ]
 });

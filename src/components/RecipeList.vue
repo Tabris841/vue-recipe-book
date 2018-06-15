@@ -1,13 +1,13 @@
 <template>
   <div>
-    <b-button variant="primary">New Recipe</b-button>
+    <b-button variant="primary"
+              @click="onNewRecipe">New Recipe</b-button>
     <hr/>
     <b-list-group>
-      <RecipeItem 
-        v-for="(recipe, index) of recipes"
-       :recipe="recipe" 
-       :key="index"
-       :index="index"/>
+      <RecipeItem v-for="(recipe, index) of recipes"
+                  :recipe="recipe"
+                  :key="index"
+                  :index="index" />
     </b-list-group>
   </div>
 </template>
@@ -21,6 +21,11 @@ export default {
   name: 'RecipeList',
   components: {
     RecipeItem
+  },
+  methods: {
+    onNewRecipe() {
+      this.$router.push({ name: 'recipeNew' });
+    }
   },
   computed: {
     ...mapGetters('recipeModule', ['recipes'])

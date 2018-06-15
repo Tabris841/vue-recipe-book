@@ -3,7 +3,10 @@
     <Header></Header>
 
     <b-container class="main-container">
-      <router-view/>
+      <transition name="fade"
+                  mode="out-in">
+        <router-view/>
+      </transition>
     </b-container>
 
   </div>

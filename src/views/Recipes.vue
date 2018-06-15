@@ -5,9 +5,12 @@
         <RecipeList />
       </b-col>
       <b-col cols="7">
-        <router-view></router-view>
+        <transition name="fade"
+                    mode="out-in">
+          <router-view></router-view>
+        </transition>
       </b-col>
-    </b-row> 
+    </b-row>
   </b-container>
 </template>
 
