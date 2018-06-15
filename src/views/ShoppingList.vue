@@ -18,14 +18,14 @@ import { mapMutations, mapGetters } from 'vuex';
 
 import ShoppingEdit from '@/components/ShoppingEdit';
 
-export default {
+export default Vue.extend({
   name: 'ShoppingList',
   components: {
     ShoppingEdit
   },
   methods: { ...mapMutations('shoppingListModule', ['startEdit']) },
   computed: { ...mapGetters('shoppingListModule', ['ingredients']) }
-};
+});
 </script>
 
 <style scoped>

@@ -11,9 +11,9 @@ export default new Vuex.Store({
   modules: {
     shoppingListModule,
     authModule,
-    recipeModule
+    recipeModule,
   },
   state: {},
   mutations: {},
-  actions: {}
+  actions: {},
 });

@@ -16,11 +16,11 @@ Vue.use(Vuelidate);
 
 firebase.initializeApp({
   apiKey: 'AIzaSyBFSLlimrqMipqKXmn8cID1_6MVq4m5BTk',
-  authDomain: 'recipe-book-7ea07.firebaseapp.com'
+  authDomain: 'recipe-book-7ea07.firebaseapp.com',
 });
 
 new Vue({
   router,
   store,
-  render: h => h(App)
+  render: (h) => h(App),
 }).$mount('#app');

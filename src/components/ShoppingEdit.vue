@@ -53,7 +53,7 @@ import { required, numeric } from 'vuelidate/lib/validators';
 
 import { Ingredient } from '@/models/ingredient.model';
 
-export default {
+export default Vue.extend({
   name: 'ShoppingEdit',
   data: () => ({
     form: {
@@ -120,5 +120,5 @@ export default {
   destroyed() {
     this.stopEdit();
   }
-};
+});
 </script>

@@ -1,9 +1,12 @@
 <template>
-  <b-navbar toggleable="md" type="dark" variant="info">
+  <b-navbar toggleable="md"
+            type="dark"
+            variant="info">
     <b-navbar-brand to="/">Recipe Book</b-navbar-brand>
 
-    <b-collapse is-nav id="nav_collapse">
-      
+    <b-collapse is-nav
+                id="nav_collapse">
+
       <b-navbar-nav>
         <b-nav-item to="/recipes">Recipes</b-nav-item>
         <b-nav-item to="/shopping-list">Shopping</b-nav-item>
@@ -36,7 +39,7 @@
 <script>
 import { mapActions, mapGetters } from 'vuex';
 
-export default {
+export default Vue.extend({
   name: 'Header',
   methods: {
     onSaveData() {},
@@ -47,7 +50,7 @@ export default {
   computed: {
     ...mapGetters('authModule', ['isAuthenticated'])
   }
-};
+});
 </script>
 
 <style scoped>

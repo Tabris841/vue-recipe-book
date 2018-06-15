@@ -3,7 +3,7 @@
 </template>
 
 <script>
-export default {
+export default Vue.extend({
   name: 'RecipeStart'
-};
+});
 </script>

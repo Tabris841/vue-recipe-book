@@ -8,13 +8,13 @@
 </template>
 
 <script>
-export default {
+export default Vue.extend({
   name: 'RecipeItem',
   props: {
     recipe: Object,
     index: Number
   }
-};
+});
 </script>
 
 <style lang="scss" scoped>

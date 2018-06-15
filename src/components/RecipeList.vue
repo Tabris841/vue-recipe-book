@@ -17,7 +17,7 @@ import { mapGetters } from 'vuex';
 
 import RecipeItem from '@/components/RecipeItem';
 
-export default {
+export default Vue.extend({
   name: 'RecipeList',
   components: {
     RecipeItem
@@ -30,5 +30,5 @@ export default {
   computed: {
     ...mapGetters('recipeModule', ['recipes'])
   }
-};
+});
 </script>

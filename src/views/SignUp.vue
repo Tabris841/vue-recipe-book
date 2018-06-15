@@ -36,7 +36,7 @@ import { mapActions } from 'vuex';
 import { validationMixin } from 'vuelidate';
 import { required } from 'vuelidate/lib/validators';
 
-export default {
+export default Vue.extend({
   name: 'SignUp',
   data() {
     return {
@@ -69,7 +69,7 @@ export default {
     },
     ...mapActions('authModule', ['authSignup'])
   }
-};
+});
 </script>
 
 <style scoped>

@@ -71,7 +71,7 @@ import { mapMutations, mapGetters } from 'vuex';
 import { validationMixin } from 'vuelidate';
 import { required, numeric } from 'vuelidate/lib/validators';
 
-export default {
+export default Vue.extend({
   name: 'RecipeEdit',
   data() {
     return {
@@ -149,7 +149,7 @@ export default {
   created() {
     this.initForm();
   }
-};
+});
 </script>
 
 <style lang="scss" scoped>

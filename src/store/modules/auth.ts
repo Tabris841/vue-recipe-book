@@ -1,13 +1,18 @@
 import firebase from 'firebase';
 
-const state = {
+export interface IAuthState {
+  token: string | null;
+  authenticated: boolean;
+}
+
+const state: IAuthState = {
   token: null,
-  authenticated: false
+  authenticated: false,
 };
 
 const getters = {
-  token: state => state.token,
-  isAuthenticated: state => state.authenticated
+  token: (state: IAuthState) => state.token,
+  isAuthenticated: (state: IAuthState) => state.authenticated,
 };
 
 const actions = {
@@ -38,20 +43,20 @@ const actions = {
     } catch (e) {
       console.log(e);
     }
-  }
+  },
 };
 
 const mutations = {
-  signin(state) {
+  signin(state: IAuthState) {
     state.authenticated = true;
   },
-  logout(state) {
+  logout(state: IAuthState) {
     state.authenticated = false;
     state.token = null;
   },
   setToken(state, token) {
     state.token = token;
-  }
+  },
 };
 
 export default {
@@ -59,5 +64,5 @@ export default {
   state,
   getters,
   actions,
-  mutations
+  mutations,
 };

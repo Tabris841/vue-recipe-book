@@ -32,7 +32,7 @@
 <script>
 import { mapGetters, mapMutations } from 'vuex';
 
-export default {
+export default Vue.extend({
   name: 'RecipeDetail',
   data() {
     return {
@@ -61,7 +61,7 @@ export default {
       this.id = to.params['id'];
     }
   }
-};
+});
 </script>
 
 <style lang="scss" scoped>

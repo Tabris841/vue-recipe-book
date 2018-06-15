@@ -12,15 +12,17 @@
   </div>
 </template>
 
-<script>
-import Header from '@/components/Header';
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
 
-export default {
-  name: 'app',
+import Header from './components/Header.vue';
+
+@Component({
   components: {
     Header
   }
-};
+})
+export default class App extends Vue {}
 </script>
 
 <style lang="scss" scoped>

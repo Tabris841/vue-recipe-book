@@ -17,12 +17,12 @@
 <script>
 import RecipeList from '@/components/RecipeList';
 
-export default {
+export default Vue.extend({
   name: 'Recipes',
   components: {
     RecipeList
   }
-};
+});
 </script>
 
 <style scoped>
