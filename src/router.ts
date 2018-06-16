@@ -2,14 +2,14 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
 import store from './store/index';
-import Home from '@/views/Home';
-import SignIn from '@/views/SignIn';
-import SignUp from '@/views/SignUp';
-import Recipes from '@/views/Recipes';
-import ShoppingList from '@/views/ShoppingList';
-import RecipeStart from '@/components/RecipeStart';
-import RecipeDetail from '@/components/RecipeDetail';
-import RecipeEdit from '@/components/RecipeEdit';
+import Home from '@/views/Home.vue';
+import SignIn from '@/views/SignIn.vue';
+import SignUp from '@/views/SignUp.vue';
+import Recipes from '@/views/Recipes.vue';
+import ShoppingList from '@/views/ShoppingList.vue';
+import RecipeStart from '@/components/RecipeStart.vue';
+import RecipeDetail from '@/components/RecipeDetail.vue';
+import RecipeEdit from '@/components/RecipeEdit.vue';
 
 Vue.use(Router);
 
@@ -19,17 +19,17 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: Home,
     },
     {
       path: '/signup',
       name: 'signup',
-      component: SignUp
+      component: SignUp,
     },
     {
       path: '/signin',
       name: 'signin',
-      component: SignIn
+      component: SignIn,
     },
     {
       path: '/recipes',
@@ -38,7 +38,7 @@ export default new Router({
         {
           path: '',
           name: 'recipes',
-          component: RecipeStart
+          component: RecipeStart,
         },
         {
           path: '/new',
@@ -50,12 +50,12 @@ export default new Router({
             } else {
               next(false);
             }
-          }
+          },
         },
         {
           path: ':id',
           name: 'recipeDetail',
-          component: RecipeDetail
+          component: RecipeDetail,
         },
         {
           path: ':id/edit',
@@ -67,15 +67,15 @@ export default new Router({
             } else {
               next(false);
             }
-          }
-        }
-      ]
+          },
+        },
+      ],
     },
     {
       path: '/shopping-list',
       name: 'shoppingList',
-      component: ShoppingList
+      component: ShoppingList,
     },
-    { path: '*', redirect: '/' }
-  ]
+    { path: '*', redirect: '/' },
+  ],
 });

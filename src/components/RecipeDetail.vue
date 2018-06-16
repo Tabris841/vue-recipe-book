@@ -30,13 +30,14 @@
 </template>
 
 <script>
+import Vue from 'vue';
 import { mapGetters, mapMutations } from 'vuex';
 
 export default Vue.extend({
   name: 'RecipeDetail',
   data() {
     return {
-      id: this.$route.params['id']
+      id: this.$route.params.id
     };
   },
   methods: {
@@ -58,7 +59,7 @@ export default Vue.extend({
   },
   watch: {
     $route(to) {
-      this.id = to.params['id'];
+      this.id = to.params.id;
     }
   }
 });

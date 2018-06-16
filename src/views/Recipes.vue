@@ -14,15 +14,18 @@
   </b-container>
 </template>
 
-<script>
-import RecipeList from '@/components/RecipeList';
+<script lang="ts">
+import Vue from 'vue';
+import { Component } from 'vue-property-decorator';
 
-export default Vue.extend({
-  name: 'Recipes',
+import RecipeList from '@/components/RecipeList.vue';
+
+@Component({
   components: {
     RecipeList
   }
-});
+})
+export default class Recipes extends Vue {}
 </script>
 
 <style scoped>

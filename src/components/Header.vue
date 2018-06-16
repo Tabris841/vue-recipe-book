@@ -37,6 +37,7 @@
 </template>
 
 <script>
+import Vue from 'vue';
 import { mapActions, mapGetters } from 'vuex';
 
 export default Vue.extend({

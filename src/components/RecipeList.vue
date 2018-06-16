@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import Vue from 'vue';
 import { mapGetters } from 'vuex';
 
 import RecipeItem from '@/components/RecipeItem';

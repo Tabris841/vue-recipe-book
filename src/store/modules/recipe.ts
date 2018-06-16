@@ -1,7 +1,14 @@
+import { GetterTree, ActionTree, MutationTree, Module } from 'vuex';
+
 import dataStorage from '@/services/data-storage';
 import { Ingredient, Recipe } from '@/models';
+import { IRootState } from '@/store';
 
-const state = {
+export interface IRecipeState {
+  recipes: Recipe[];
+}
+
+const recipesState: IRecipeState = {
   recipes: [
     new Recipe(
       'Tasty Schnitzel',
@@ -18,11 +25,11 @@ const state = {
   ],
 };
 
-const getters = {
+const getters: GetterTree<IRecipeState, IRootState> = {
   recipes: (state) => state.recipes,
 };
 
-const actions = {
+const actions: ActionTree<IRecipeState, IRootState> = {
   recipeFetch({ commit }) {
     dataStorage.getRecipes().then((recipes) => commit('setRecipes', recipes));
   },
@@ -31,7 +38,7 @@ const actions = {
   },
 };
 
-const mutations = {
+const mutations: MutationTree<IRecipeState> = {
   setRecipes(state, recipes) {
     state.recipes = [...recipes];
   },
@@ -52,9 +59,9 @@ const mutations = {
   },
 };
 
-export default {
+export const recipeModule: Module<IRecipeState, IRootState> = {
   namespaced: true,
-  state,
+  state: recipesState,
   getters,
   actions,
   mutations,

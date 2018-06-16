@@ -1,27 +1,28 @@
 import axios from 'axios';
 
 import Store from '@/store';
+import { Recipe } from '@/models';
 
 axios.defaults.baseURL = 'https://recipe-book-7ea07.firebaseio.com';
 
-axios.interceptors.request.use(config => {
+axios.interceptors.request.use((config) => {
   config.params = { auth: Store.getters['authModule/token'] };
   return config;
 });
 
 export default {
   getRecipes() {
-    return new Promise(resolve => {
-      axios.get('/recipes.json').then(response => {
+    return new Promise((resolve) => {
+      axios.get('/recipes.json').then((response) => {
         resolve(response.data);
       });
     });
   },
-  storeRecipes(recipes) {
-    return new Promise(resolve => {
-      axios.put('/recipes.json', recipes).then(response => {
+  storeRecipes(recipes: Recipe[]) {
+    return new Promise((resolve) => {
+      axios.put('/recipes.json', recipes).then((response) => {
         resolve(response.data);
       });
     });
-  }
+  },
 };

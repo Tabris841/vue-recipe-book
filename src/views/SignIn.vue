@@ -31,45 +31,63 @@
   </b-container>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from 'vue';
 import { mapActions } from 'vuex';
+import { Component, Provide } from 'vue-property-decorator';
+import { Getter, Mutation, Action } from 'vuex-class';
 import { validationMixin } from 'vuelidate';
 import { required } from 'vuelidate/lib/validators';
 
-export default Vue.extend({
-  name: 'SignIn',
-  data() {
-    return {
-      form: {
-        email: '',
-        password: ''
-      }
-    };
-  },
-  mixins: [validationMixin],
-  validations: {
-    form: {
-      email: {
-        required
-      },
-      password: {
-        required
-      }
-    }
-  },
-  methods: {
-    onSignin() {
-      this.authSignin({
-        email: this.form.email,
-        password: this.form.password
-      }).then(() => this.$router.push({ path: '/' }));
-    },
-    checkValidationState(field) {
-      return this.$v.form[field].$dirty ? !this.$v.form[field].$invalid : null;
-    },
-    ...mapActions('authModule', ['authSignin'])
+const namespace: string = 'authModule';
+
+@Component({
+  mixins: [validationMixin]
+})
+export default class SginIn extends Vue {
+  form = {
+    email: '',
+    password: ''
+  };
+
+  @Action('authSignin', { namespace })
+  private authSignin: (
+    { email, password }: { email: string; password: string }
+  ) => Promise<void>;
+
+  onSignin() {
+    this.authSignin({
+      email: this.form.email,
+      password: this.form.password
+    }).then(() => this.$router.push({ path: '/' }));
   }
-});
+
+  checkValidationState(field: string) {
+    return this.$v.form[field].$dirty ? !this.$v.form[field].$invalid : null;
+  }
+  // validations: {
+  //   form: {
+  //     email: {
+  //       required
+  //     },
+  //     password: {
+  //       required
+  //     }
+  //   }
+  // },
+  // methods: {
+  //   onSignin() {
+  //     this.authSignin({
+  //       email: this.form.email,
+  //       password: this.form.password
+  //     }).then(() => this.$router.push({ path: '/' }));
+  //   },
+  //   checkValidationState(field) {
+  //     return this.$v.form[field].$dirty ? !this.$v.form[field].$invalid : null;
+  //   },
+  //   ...mapActions('authModule', ['authSignin'])
+  // }
+}
 </script>
 
 <style scoped>

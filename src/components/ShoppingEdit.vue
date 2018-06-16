@@ -47,6 +47,7 @@
 </template>
 
 <script>
+import Vue from 'vue';
 import { mapMutations, mapGetters } from 'vuex';
 import { validationMixin } from 'vuelidate';
 import { required, numeric } from 'vuelidate/lib/validators';

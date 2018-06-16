@@ -67,6 +67,7 @@
 </template>
 
 <script>
+import Vue from 'vue';
 import { mapMutations, mapGetters } from 'vuex';
 import { validationMixin } from 'vuelidate';
 import { required, numeric } from 'vuelidate/lib/validators';
@@ -75,8 +76,8 @@ export default Vue.extend({
   name: 'RecipeEdit',
   data() {
     return {
-      id: this.$route.params['id'],
-      editMode: this.$route.params['id'] != null,
+      id: this.$route.params.id,
+      editMode: this.$route.params.id != null,
       form: {
         name: '',
         imagePath: '',
@@ -101,8 +102,8 @@ export default Vue.extend({
   },
   watch: {
     $route(to) {
-      this.id = to.params['id'];
-      this.editMode = to.params['id'] != null;
+      this.id = to.params.id;
+      this.editMode = to.params.id != null;
       this.initForm();
     }
   },

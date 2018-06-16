@@ -13,19 +13,28 @@
   </div>
 </template>
 
-<script>
-import { mapMutations, mapGetters } from 'vuex';
+<script lang="ts">
+import Vue from 'vue';
+import { Component } from 'vue-property-decorator';
+import { Getter, Mutation } from 'vuex-class';
 
-import ShoppingEdit from '@/components/ShoppingEdit';
+import ShoppingEdit from '@/components/ShoppingEdit.vue';
+import { Ingredient } from '@/models';
 
-export default Vue.extend({
-  name: 'ShoppingList',
+const namespace: string = 'shoppingListModule';
+
+@Component({
   components: {
     ShoppingEdit
-  },
-  methods: { ...mapMutations('shoppingListModule', ['startEdit']) },
-  computed: { ...mapGetters('shoppingListModule', ['ingredients']) }
-});
+  }
+})
+export default class ShippingList extends Vue {
+  @Getter('ingredients', { namespace })
+  private ingredients: Ingredient[];
+
+  @Mutation('startEdit', { namespace })
+  private startEdit: (index: number) => void;
+}
 </script>
 
 <style scoped>

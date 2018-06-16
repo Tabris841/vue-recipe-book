@@ -1,13 +1,17 @@
 import Vue from 'vue';
-import Vuex from 'vuex';
+import Vuex, { StoreOptions } from 'vuex';
 
-import shoppingListModule from './modules/shopping-list';
-import authModule from './modules/auth';
-import recipeModule from './modules/recipe';
+import { recipeModule, authModule, shoppingListModule } from '@/store/modules';
 
 Vue.use(Vuex);
 
-export default new Vuex.Store({
+export interface IRootState {
+  // shoppingListModule: shoppingListModule;
+  // authModule: authModule;
+  // recipeModule: recipeModule;
+}
+
+const store: StoreOptions<IRootState> = {
   modules: {
     shoppingListModule,
     authModule,
@@ -16,4 +20,6 @@ export default new Vuex.Store({
   state: {},
   mutations: {},
   actions: {},
-});
+};
+
+export default new Vuex.Store<IRootState>(store);

@@ -1,21 +1,24 @@
 import firebase from 'firebase';
+import { GetterTree, Module, ActionTree, MutationTree } from 'vuex';
+
+import { IRootState } from '@/store';
 
 export interface IAuthState {
   token: string | null;
   authenticated: boolean;
 }
 
-const state: IAuthState = {
+const authState: IAuthState = {
   token: null,
-  authenticated: false,
+  authenticated: false
 };
 
-const getters = {
-  token: (state: IAuthState) => state.token,
-  isAuthenticated: (state: IAuthState) => state.authenticated,
+const getters: GetterTree<IAuthState, IRootState> = {
+  token: (state) => state.token,
+  isAuthenticated: (state) => state.authenticated
 };
 
-const actions = {
+const actions: ActionTree<IAuthState, IRootState> = {
   async authSignup({ commit }, { email, password }) {
     try {
       await firebase.auth().createUserWithEmailAndPassword(email, password);
@@ -23,6 +26,7 @@ const actions = {
       commit('signin');
       commit('setToken', token);
     } catch (e) {
+      // tslint:disable-next-line
       console.log(e);
     }
   },
@@ -33,6 +37,7 @@ const actions = {
       commit('signin');
       commit('setToken', token);
     } catch (e) {
+      // tslint:disable-next-line
       console.log(e);
     }
   },
@@ -41,28 +46,29 @@ const actions = {
       await firebase.auth().signOut();
       commit('logout');
     } catch (e) {
+      // tslint:disable-next-line
       console.log(e);
     }
-  },
+  }
 };
 
-const mutations = {
-  signin(state: IAuthState) {
+const mutations: MutationTree<IAuthState> = {
+  signin(state) {
     state.authenticated = true;
   },
-  logout(state: IAuthState) {
+  logout(state) {
     state.authenticated = false;
     state.token = null;
   },
   setToken(state, token) {
     state.token = token;
-  },
+  }
 };
 
-export default {
+export const authModule: Module<IAuthState, IRootState> = {
   namespaced: true,
-  state,
+  state: authState,
   getters,
   actions,
-  mutations,
+  mutations
 };
